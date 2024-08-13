@@ -22,7 +22,6 @@ design choices.
 - [Storage Engine](#storage-engine)
   - [Key/Value Storage](#keyvalue-storage)
   - [MVCC Transactions](#mvcc-transactions)
-  - [Log-structured Storage](#log-structured-storage)
 - [Raft Consensus Engine](#raft-consensus-engine)
 - [SQL Engine](#sql-engine)
   - [Types](#types)
@@ -323,14 +322,14 @@ Calling `evaluate()` on the expression will recursively evaluate it, returning `
 
 ### Schemas
 
-The schema defines the tables [`sql::Table`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/schema.rs)
-and columns [`sql::Column`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/schema.rs)
+The schema defines the tables [`sql::Table`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/types/schema.rs)
+and columns [`sql::Column`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/types/schema.rs)
 in a toyDB database. Tables have a name and a list of columns, while a column has several
 attributes such as name, data type, and various constraints. They also have methods to
 validate rows and values, e.g. to make sure a value is of the correct type for a column
 or to enforce referential integrity.
 
-The schema is stored and managed with [`sql::Catalog`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/schema.rs),
+The schema is stored and managed with [`sql::Catalog`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/types/schema.rs),
 a trait implemented by the SQL storage engine:
 
 ```rust
@@ -409,9 +408,9 @@ pub trait Transaction: Catalog {
 }
 ```
 
-The main SQL storage engine implementation is
+<!-- The main SQL storage engine implementation is
 [`sql::engine::KV`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/engine/kv.rs), which 
-is built on top of an MVCC key/value store and its transaction functionality.
+is built on top of an MVCC key/value store and its transaction functionality. -->
 
 The Raft SQL storage engine
 [`sql::engine::Raft`](https://github.com/erikgrinaker/toydb/blob/master/src/sql/engine/raft.rs)

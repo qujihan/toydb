@@ -1,4 +1,4 @@
-//! Decodes and formats raw keys and values, recursively as needed. Handles both
+//! Decodes and formats raw keys and values, recursively as needed. Handles
 //! both Raft, MVCC, SQL, and raw binary data.
 
 use super::{bincode, Key as _, Value as _};
